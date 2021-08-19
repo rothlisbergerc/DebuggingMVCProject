@@ -56,7 +56,7 @@ namespace AspnetCoreWithBugs.Controllers
             {
                 _context.Update(product);
                 await _context.SaveChangesAsync();
- 
+
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -75,7 +75,8 @@ namespace AspnetCoreWithBugs.Controllers
             return View(product);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Product.FindAsync(id);
