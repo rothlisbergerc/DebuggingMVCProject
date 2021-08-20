@@ -10,9 +10,8 @@ namespace AspnetCoreWithBugs.Models
     public class ProductContext : DbContext
     {
         public ProductContext(DbContextOptions<ProductContext> options) : base(options)
-        {
+        {}
 
-        }
-        public DbSet<AspnetCoreWithBugs.Models.Product> Product { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

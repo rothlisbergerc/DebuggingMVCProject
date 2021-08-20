@@ -23,6 +23,7 @@ namespace AspnetCoreWithBugs.Controllers
             return View(await _context.Product.ToListAsync());
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -39,6 +40,7 @@ namespace AspnetCoreWithBugs.Controllers
             return View(product);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var product = await _context.Product.FindAsync(id);
@@ -56,12 +58,13 @@ namespace AspnetCoreWithBugs.Controllers
             {
                 _context.Update(product);
                 await _context.SaveChangesAsync();
- 
+
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _context.Product
@@ -75,7 +78,8 @@ namespace AspnetCoreWithBugs.Controllers
             return View(product);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Product.FindAsync(id);
